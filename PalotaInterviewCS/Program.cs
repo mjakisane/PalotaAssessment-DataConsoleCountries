@@ -192,9 +192,7 @@ namespace PalotaInterviewCS
         }
         public static int FindCountryGini(Country[] countries, string countryToFind)
         {
-            var saObject = countries.FirstOrDefault(o => o.Name.ToLower() == countryToFind.ToLower());
-            int southAfricanGiniPlace = saObject.Gini == null ? 0 : (int)saObject.Gini;
-            return southAfricanGiniPlace;
+            return countries.OrderByDescending(o => o.Gini).ToList().IndexOf(countries.FirstOrDefault(o => o.Name.ToLower() == countryToFind.ToLower())) + 1;
         }
         public static Country GetLowestGiniCountry(Country[] countries)
         {
